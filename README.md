@@ -1,4 +1,4 @@
-"# AWSRekognition Python"
+# AWSRekognition Python
 ## How to run?
 
 - create and activate virtualenv.
@@ -8,4 +8,5 @@
 - run the python file
 
 
-## Md. Jakaria (Email-jakaria.pust@gmail.com)
+## Contact
+**Md. Jakaria**( jakaria.pust@gmail.com)
