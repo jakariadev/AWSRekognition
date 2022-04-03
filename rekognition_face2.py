@@ -10,27 +10,30 @@ try:
         for line in reader:
             access_key_id = line[0]
             secret_access_key = line[1]
+            
     # Given photo to analysis
     ref_photo = 'jakaria.jpg'
     photo2 = 'jkr.jpg'
-    ref_photo2 = 'jakariaWCM1.jpg'
+
     client = boto3.client('rekognition', aws_access_key_id = access_key_id,
     aws_secret_access_key = secret_access_key, region_name='ap-southeast-1')
-    print("client created at: {}".format(client))
 
     # detection portion with provied image.
-    with open(ref_photo2, 'rb') as source_image:
+    with open(photo2, 'rb') as source_image:
         source_bytes = source_image.read()
 
-    #Search by image
-    response = client.search_faces_by_image(
-        CollectionId="AS_Collection1",
-        Image={'Bytes': source_bytes},
-        MaxFaces=5,
-        FaceMatchThreshold=70,
-        QualityFilter='AUTO'
-    )
-    print("Search Image Response: {}".format(response))
-    
+    # Image Indexing
+    response = client.index_faces(
+    CollectionId= "XXXXXXXXXXX",
+    Image={'Bytes': source_bytes},
+    ExternalImageId='myphotoid',
+    DetectionAttributes=[
+        'ALL',
+    ],
+    MaxFaces=5,
+    QualityFilter='AUTO'
+)
+    print("indexed output: {}".format(response))
+
 except ClientError as error:
     print("ERROR CODE: {} & MESAGE: {}".format(error.response, error.response['Error']['Message'] ))
