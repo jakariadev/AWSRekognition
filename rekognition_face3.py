@@ -24,7 +24,7 @@ try:
 
     #Search by image
     response = client.search_faces_by_image(
-        CollectionId="AS_Collection1",
+        CollectionId="XXXXXXXXXXXX",
         Image={'Bytes': source_bytes},
         MaxFaces=5,
         FaceMatchThreshold=70,
