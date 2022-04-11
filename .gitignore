@@ -1,5 +1,5 @@
 /venv
 .venv
-venv
+venv/
 /aws_access_keys.csv
-aws_access_keys.csv
+.aws_access_keys.csv

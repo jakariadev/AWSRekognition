@@ -1,8 +1,11 @@
 import csv
 import boto3
 from botocore.exceptions import ClientError
+import time
+start_time = time.time()
 
 try:
+    start_time = time.time()
     # taking keys from the file
     with open('aws_access_keys.csv', 'r') as input:
         next(input)
@@ -45,9 +48,10 @@ try:
         except ClientError as e:
             return 0,"Problem in client"
 
-    # create("AS_Collection1")
+    create("FR_Collection_XXXXX")
+    # list of all the collections
     list_collections()
-
+    print("--- %s seconds ---" % (time.time() - start_time))
 
 except ClientError as error:
     print("ERROR CODE: {} & MESAGE: {}".format(error.response, error.response['Error']['Message'] ))
